@@ -1,5 +1,5 @@
 **/bin/
-**/obj/*
+**/obj/
 .vs
 Backup
 UpgradeLog.htm
