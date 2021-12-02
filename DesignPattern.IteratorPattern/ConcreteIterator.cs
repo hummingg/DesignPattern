@@ -3,7 +3,8 @@
     // 具体迭代器类
     public class ConcreteIterator : Iterator
     {
-        // 迭代器要集合对象进行遍历操作，自然就需要引用集合对象
+        // 迭代器要遍历集合中对象，自然就需要引用对象集合
+        // private：隐藏内部
         private ConcreteListCollection _list;
         private int _index;
 
@@ -13,14 +14,9 @@
             _index = 0;
         }
 
-
-        public bool MoveNext()
+        public bool IsNotEnd()
         {
-            if (_index < _list.Length)
-            {
-                return true;
-            }
-            return false;
+            return _index < _list.Length;
         }
 
         public Object GetCurrent()
@@ -33,13 +29,12 @@
             _index = 0;
         }
 
-        public void Next()
+        public void MoveToNext()
         {
             if (_index < _list.Length)
             {
                 _index++;
             }
-
         }
     }
 }

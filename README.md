@@ -12,7 +12,6 @@
 - https://www.cnblogs.com/zhili/category/496417.html
 - https://www.cnblogs.com/wyy1234/category/1341803.html
 - https://blog.csdn.net/carrie_q/category_7611377.html 命令模式
-- https://www.cnblogs.com/zhili/p/CommandPattern.html 命令模式
 - https://www.runoob.com/design-pattern/design-pattern-tutorial.html 空对象模式、过滤器模式
 - https://github.com/xuzeyu91/.Net-DesignPattern 过滤器模式
 - https://www.cnblogs.com/PatrickLiu/p/8242238.html 解释器模式

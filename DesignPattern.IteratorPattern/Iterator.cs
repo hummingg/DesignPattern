@@ -3,9 +3,9 @@
     // 迭代器抽象类
     public interface Iterator
     {
-        bool MoveNext();
+        bool IsNotEnd();
         Object GetCurrent();
-        void Next();
+        void MoveToNext();
         void Reset();
     }
 }

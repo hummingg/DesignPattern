@@ -58,7 +58,7 @@ namespace DesignPattern.InterpreterPattern
         {
             _dictory.Add("this", "这");
             _dictory.Add("is", "是");
-            _dictory.Add("an", "一个");
+            _dictory.Add("an", "一");
             _dictory.Add("apple", "苹果");
             _dictory.Add("orange", "橘子");
         }
@@ -93,6 +93,7 @@ namespace DesignPattern.InterpreterPattern
             }
             Console.WriteLine(sb.ToString());
 
+            // 另一个解释器示例
             InterpreterPattern.Number.Program.Show(new string[] { });
         }
     }
