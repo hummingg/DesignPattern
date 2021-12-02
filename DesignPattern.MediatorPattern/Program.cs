@@ -14,16 +14,16 @@
             AbstractMediator mediator = new ConcreteMediator(a, b);
 
             //玩家a赢了玩家b 5 元
-            Console.WriteLine("a赢了b5元");
+            Console.WriteLine("a赢了b 5元");
             a.ChangeCount(5, mediator);
-            Console.WriteLine($"玩家a现在有{a.MoneyCount}元");
-            Console.WriteLine($"玩家b现在有{b.MoneyCount}元");
+            Console.WriteLine($"玩家a现在有 {a.MoneyCount} 元");
+            Console.WriteLine($"玩家b现在有 {b.MoneyCount} 元");
 
             //玩家b赢了玩家a 10 元
-            Console.WriteLine("b赢了a10元");
+            Console.WriteLine("b赢了a 10元");
             b.ChangeCount(10, mediator);
-            Console.WriteLine($"玩家a现在有{a.MoneyCount}元");
-            Console.WriteLine($"玩家b现在有{b.MoneyCount}元");
+            Console.WriteLine($"玩家a现在有 {a.MoneyCount} 元");
+            Console.WriteLine($"玩家b现在有 {b.MoneyCount} 元");
         }
     }
 }
