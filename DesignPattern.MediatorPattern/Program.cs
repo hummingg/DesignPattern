@@ -11,7 +11,7 @@
         {
             AbstractCardPlayer a = new PlayerA() { MoneyCount = 20 };
             AbstractCardPlayer b = new PlayerB() { MoneyCount = 20 };
-            AbstractMediator mediator = new Mediator(a, b);
+            AbstractMediator mediator = new ConcreteMediator(a, b);
 
             //玩家a赢了玩家b 5元
             Console.WriteLine("a赢了b5元");

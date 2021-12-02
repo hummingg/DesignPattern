@@ -19,9 +19,9 @@
     }
 
     //具体中介者
-    public class Mediator : AbstractMediator
+    public class ConcreteMediator : AbstractMediator
     {
-        public Mediator(AbstractCardPlayer a, AbstractCardPlayer b) : base(a, b) { }
+        public ConcreteMediator(AbstractCardPlayer a, AbstractCardPlayer b) : base(a, b) { }
 
         public override void AWin(int count)
         {
