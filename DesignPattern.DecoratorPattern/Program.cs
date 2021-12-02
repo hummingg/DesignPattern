@@ -1,8 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-// Console.WriteLine("Hello, World!");
-
-// https://www.cnblogs.com/wyy1234/p/10017106.html
-namespace DesignPattern.DecoratorPattern
+﻿namespace DesignPattern.DecoratorPattern
 {
     class Program
     {
@@ -34,8 +30,9 @@ namespace DesignPattern.DecoratorPattern
             personWithTshirt.SetPerson(xc);//给小菜穿上t恤
             personWithSneaker.SetPerson(personWithTshirt);//给穿上t恤的小菜穿上网球鞋
             personWithSneaker.Show();
-
-            Console.ReadKey();
+            // xc.Add(Tshirt).Add(Sneaker).Show();    // 链式调用
         }
     }
 }
+
+// https://www.cnblogs.com/wyy1234/p/10017106.html

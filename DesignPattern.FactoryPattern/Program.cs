@@ -1,8 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-// Console.WriteLine("Hello, World!");
-
-
-namespace DesignPattern.FactoryPattern
+﻿namespace DesignPattern.FactoryPattern
 {
     class Program
     {
@@ -12,7 +8,7 @@ namespace DesignPattern.FactoryPattern
             MouseFactory mouseFactory;
 
             //生产一个戴尔鼠标
-            mouseFactory = new DellMouseFactroy();
+            mouseFactory = new DellMouseFactroy();  // 相比简单工厂，用具体工厂把方法的参数（"魔数"如"dell"）替换了。不用修改唯一的工厂的if。
             mouse = mouseFactory.CreateMouse();
             mouse.Print();
 
@@ -23,3 +19,5 @@ namespace DesignPattern.FactoryPattern
         }
     }
 }
+
+// https://www.cnblogs.com/wyy1234/p/9978966.html

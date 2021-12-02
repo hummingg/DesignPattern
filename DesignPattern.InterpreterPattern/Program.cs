@@ -93,7 +93,7 @@ namespace DesignPattern.InterpreterPattern
             }
             Console.WriteLine(sb.ToString());
 
-            DesignPattern.InterpreterPattern.Number.Program.Show(new string[] { });
+            InterpreterPattern.Number.Program.Show(new string[] { });
         }
     }
 }

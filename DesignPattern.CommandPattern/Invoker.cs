@@ -1,11 +1,11 @@
 ﻿namespace DesignPattern.CommandPattern.Invoker
 {
     // 教官，负责调用命令对象执行请求
-    public class Invoke
+    public class Invoker
     {
         public Command _command;
 
-        public Invoke(Command command)
+        public Invoker(Command command)
         {
             this._command = command;
         }
@@ -63,10 +63,12 @@
             // 初始化Receiver、Invoke和Command
             Receiver r = new Receiver();
             Command c = new ConcreteCommand(r);
-            Invoke i = new Invoke(c);
+            Invoker i = new Invoker(c);
 
-            // 院领导发出命令
+            // 院领导发出命令,教官让学生跑
             i.ExecuteCommand();
         }
     }
 }
+
+// https://www.cnblogs.com/zhili/p/CommandPattern.html

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DesignPattern.CompositePattern
 {
@@ -9,15 +7,15 @@ namespace DesignPattern.CompositePattern
     {
         public Employee(string name) : base(name)
         {
-            this.name = name;
         }
-        //Leaf不能添加/删除子节点所以空实现
+        //Leaf不能添加/删除子节点，所以 空实现
         public override void Add(Component c)
         {
+            throw new NotImplementedException();
         }
         public override void Remove(Component c)
         {
-
+            throw new NotImplementedException();
         }
         public override void Display(int dept)
         {

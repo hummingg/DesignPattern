@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.DecoratorPattern
+﻿namespace DesignPattern.DecoratorPattern
 {
-    //因为我们装饰后的person要直接替换装饰前的person，所以必须继承AbstractPerson
+    // 服饰类
+    // 因为我们装饰后的person要能直接替换装饰前的person，所以必须继承AbstractPerson
     public abstract class Finery : AbstractPerson
     {
         protected AbstractPerson person;

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace DesignPattern.BuilderPattern
 {
@@ -22,7 +18,7 @@ namespace DesignPattern.BuilderPattern
         private StringBuilder house = new StringBuilder();
         public override void Dadiji()
         {
-            house.Append("深地基-->");
+            house.Append("挖深地基-->");
             //这里一般是new一个部件，添加到实例中，如 house.Diji=new Diji("深地基")
             //为了演示方便 用sringBuilder表示一个复杂的房子，string表示房子的部件
         }
@@ -36,6 +32,7 @@ namespace DesignPattern.BuilderPattern
         {
             house.Append("砌砖整齐-->");
         }
+
         public string GetHouse()
         {
             return house.Append("好质量房子建成了！").ToString();
@@ -62,6 +59,7 @@ namespace DesignPattern.BuilderPattern
         {
             house.Append("砌砖错乱-->");
         }
+
         public string GetHouse()
         {
             return house.Append("坏质量房子建成了！").ToString();

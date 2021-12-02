@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.BridgePattern
+﻿namespace DesignPattern.BridgePattern
 {
     /// <summary>
     /// 颜色接口
@@ -20,7 +14,7 @@ namespace DesignPattern.BridgePattern
     {
         public void Paint(string shape)
         {
-            Console.WriteLine($"蓝色的{shape}");
+            Console.WriteLine($"蓝色的{shape}");   // 把字符串 拼接 起来了，这就是桥接？
         }
     }
     /// <summary>

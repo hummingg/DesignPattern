@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.FacadePattern
+﻿namespace DesignPattern.FacadePattern
 {
     /// <summary>
     /// 电脑  facede角色
@@ -14,6 +8,7 @@ namespace DesignPattern.FacadePattern
         private CPU cpu;
         private Memory memory;
         private Disk disk;
+
         public Computer()
         {
             this.cpu = new CPU();
@@ -28,6 +23,7 @@ namespace DesignPattern.FacadePattern
             disk.DiskStart();
             Console.WriteLine("computer start end!");
         }
+
         public void Shutdown()
         {
             cpu.CPUShutdown();

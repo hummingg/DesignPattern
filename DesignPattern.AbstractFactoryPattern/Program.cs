@@ -1,9 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-// Console.WriteLine("Hello, World!");
-
-
-// https://www.cnblogs.com/wyy1234/p/9986575.html
-namespace DesignPattern.AbstractFactoryPattern
+﻿namespace DesignPattern.AbstractFactoryPattern
 {
     class Program
     {
@@ -29,3 +24,5 @@ namespace DesignPattern.AbstractFactoryPattern
         }
     }
 }
+
+// https://www.cnblogs.com/wyy1234/p/9986575.html

@@ -1,22 +1,21 @@
-﻿// See https://aka.ms/new-console-template for more information
-// Console.WriteLine("Hello, World!");
-
-namespace DesignPattern.BridgePattern
+﻿namespace DesignPattern.BridgePattern
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Shape circle = new Circle();
+            Shape shape;
             IColor blue = new Blue();
-            circle.SetColor(blue);//设置颜色
-            circle.Draw();//画图
 
-            Shape triangle = new Triangle();
-            triangle.SetColor(blue);
-            triangle.Draw();
+            shape = new Circle();
+            shape.SetColor(blue);//设置颜色
+            shape.Draw();//画图
 
-            Console.ReadKey();
+            shape = new Triangle();
+            shape.SetColor(blue);
+            shape.Draw();
         }
     }
 }
+
+// https://www.cnblogs.com/wyy1234/p/10016051.html

@@ -5,7 +5,7 @@ namespace DesignPattern.InterpreterPattern.Number
     // 抽象表达式
     public abstract class Expression
     {
-        protected Dictionary<string, int> table = new Dictionary<string, int>(9);
+        protected Dictionary<string, ulong> table = new Dictionary<string, ulong>(9);
 
         protected Expression()
         {
@@ -20,7 +20,20 @@ namespace DesignPattern.InterpreterPattern.Number
             table.Add("九", 9);
         }
 
-        public virtual void Interpreter(Context context)
+        public abstract string GetPostFix();
+
+        public abstract ulong Multiplier();
+
+        // 个、万、亿、兆=亿亿 前面不一定是数字，返回 1
+        // 十、百、千的翻译方法，前面一定是数字，返回 2
+        public virtual int GetLength()
+        {
+            return this.GetPostFix().Length + 1;
+        }
+
+        // 个、万、亿、兆=亿亿 前面不一定是数字，有自己的翻译方法
+        // 十、百、千的翻译方法，前面一定是数字
+        public virtual void Interpret(Context context)
         {
             if (context.Statement.Length == 0)
             {
@@ -29,28 +42,18 @@ namespace DesignPattern.InterpreterPattern.Number
 
             foreach (string key in table.Keys)
             {
-                int value = table[key];
-
-                if (context.Statement.EndsWith(key + GetPostFix()))
+                string postFix = this.GetPostFix();
+                if (context.Statement.EndsWith(key + postFix)) // 一、一十、一百、一千...
                 {
+                    ulong value = table[key];
                     context.Data += value * this.Multiplier();
                     context.Statement = context.Statement.Substring(0, context.Statement.Length - this.GetLength());
                 }
-                if (context.Statement.EndsWith("零"))
+                if (context.Statement.EndsWith("零"))    // 截2位后，末位可能是0
                 {
                     context.Statement = context.Statement.Substring(0, context.Statement.Length - 1);
                 }
             }
-        }
-
-        public abstract string GetPostFix();
-
-        public abstract int Multiplier();
-
-        //这个可以通用，但是对于个位数字例外，所以用虚方法
-        public virtual int GetLength()
-        {
-            return this.GetPostFix().Length + 1;
         }
     }
 
@@ -62,7 +65,7 @@ namespace DesignPattern.InterpreterPattern.Number
             return "";
         }
 
-        public override int Multiplier()
+        public override ulong Multiplier()
         {
             return 1;
         }
@@ -81,7 +84,7 @@ namespace DesignPattern.InterpreterPattern.Number
             return "十";
         }
 
-        public override int Multiplier()
+        public override ulong Multiplier()
         {
             return 10;
         }
@@ -95,7 +98,7 @@ namespace DesignPattern.InterpreterPattern.Number
             return "百";
         }
 
-        public override int Multiplier()
+        public override ulong Multiplier()
         {
             return 100;
         }
@@ -109,7 +112,7 @@ namespace DesignPattern.InterpreterPattern.Number
             return "千";
         }
 
-        public override int Multiplier()
+        public override ulong Multiplier()
         {
             return 1000;
         }
@@ -123,12 +126,17 @@ namespace DesignPattern.InterpreterPattern.Number
             return "万";
         }
 
-        public override int Multiplier()
+        public override ulong Multiplier()
         {
             return 10_000;
         }
 
-        public override void Interpreter(Context context)
+        public override int GetLength()
+        {
+            return 1;
+        }
+
+        public override void Interpret(Context context)
         {
             if (context.Statement.Length == 0)
             {
@@ -137,6 +145,7 @@ namespace DesignPattern.InterpreterPattern.Number
 
             ArrayList tree = new ArrayList();
 
+            // 处理比自己小的单位
             tree.Add(new GeExpression());
             tree.Add(new ShiExpression());
             tree.Add(new BaiExpression());
@@ -144,16 +153,17 @@ namespace DesignPattern.InterpreterPattern.Number
 
             foreach (string key in table.Keys)
             {
-                if (context.Statement.EndsWith(GetPostFix()))
+                string postFix = this.GetPostFix();
+                if (context.Statement.EndsWith(postFix))
                 {
-                    int temp = context.Data;
+                    ulong temp = context.Data;
                     context.Data = 0;
 
                     context.Statement = context.Statement.Substring(0, context.Statement.Length - this.GetLength());
 
                     foreach (Expression exp in tree)
                     {
-                        exp.Interpreter(context);
+                        exp.Interpret(context);
                     }
                     context.Data = temp + context.Data * this.Multiplier();
                 }
@@ -169,87 +179,43 @@ namespace DesignPattern.InterpreterPattern.Number
             return "亿";
         }
 
-        public override int Multiplier()
+        public override ulong Multiplier()
         {
             return 100_000_000;
         }
 
-        public override void Interpreter(Context context)
+        public override int GetLength()
+        {
+            return 1;
+        }
+
+        public override void Interpret(Context context)
         {
             ArrayList tree = new ArrayList();
 
-            tree.Add(new GeExpression());
-            tree.Add(new ShiExpression());
-            tree.Add(new BaiExpression());
-            tree.Add(new QianExpression());
-
-            foreach (string key in table.Keys)
-            {
-                if (context.Statement.EndsWith(GetPostFix()))
-                {
-                    int temp = context.Data;
-                    context.Data = 0;
-                    context.Statement = context.Statement.Substring(0, context.Statement.Length - this.GetLength());
-
-                    foreach (Expression exp in tree)
-                    {
-                        exp.Interpreter(context);
-                    }
-                    context.Data = temp + context.Data * this.Multiplier();
-                }
-            }
-        }
-    }
-
-    //环境上下文
-    public sealed class Context
-    {
-        private string _statement;
-        private int _data;
-
-        public Context(string statement)
-        {
-            this._statement = statement;
-        }
-
-        public string Statement
-        {
-            get { return this._statement; }
-            set { this._statement = value; }
-        }
-
-        public int Data
-        {
-            get { return this._data; }
-            set { this._data = value; }
-        }
-    }
-
-    class Program
-    {
-        public static void Show(string[] args)
-        {
-            //string roman = "五亿七千三百零二万六千四百五十二";
-            string roman = "五亿";
-            //分解：((五)亿)((七千)(三百)(零)(二)万)
-            //((六千)(四百)(五十)(二))
-
-            Context context = new Context(roman);
-            ArrayList tree = new ArrayList();
-
+            // 处理比自己小的单位
             tree.Add(new GeExpression());
             tree.Add(new ShiExpression());
             tree.Add(new BaiExpression());
             tree.Add(new QianExpression());
             tree.Add(new WanExpression());
-            tree.Add(new YiExpression());
 
-            foreach (Expression exp in tree)
+            foreach (string key in table.Keys)
             {
-                exp.Interpreter(context);
-            }
+                string postFix = this.GetPostFix();
+                if (context.Statement.EndsWith(postFix))
+                {
+                    ulong temp = context.Data;
+                    context.Data = 0;
+                    context.Statement = context.Statement.Substring(0, context.Statement.Length - this.GetLength());
 
-            Console.Write(context.Data);
+                    foreach (Expression exp in tree)
+                    {
+                        exp.Interpret(context);
+                    }
+                    context.Data = temp + context.Data * this.Multiplier();
+                }
+            }
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DesignPattern.CompositePattern
+﻿namespace DesignPattern.CompositePattern
 {
     /// <summary>
     /// 抽象部件 定义了树枝和树叶的公共属性和接口

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DesignPattern.CompositePattern
 {
@@ -9,12 +8,11 @@ namespace DesignPattern.CompositePattern
     /// </summary>
     public class Depart : Component
     {
+        public List<Component> children = new List<Component>();
         public Depart(string name) : base(name)
         {
-            //this.name = name;
         }
         //添加子节点
-        public List<Component> children = new List<Component>();
         public override void Add(Component c)
         {
             children.Add(c);

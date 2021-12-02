@@ -49,5 +49,7 @@ namespace DesignPattern.FilterPattern
             }
         }
     }
-    
 }
+
+// https://github.com/xuzeyu91/.Net-DesignPattern
+// https://www.runoob.com/design-pattern/design-pattern-tutorial.html

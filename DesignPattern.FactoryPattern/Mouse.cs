@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.FactoryPattern
+﻿namespace DesignPattern.FactoryPattern
 {
     //鼠标抽象类
     public abstract class Mouse
