@@ -4,7 +4,6 @@
     {
         public static void Main(string[] args)
         {
-
             // 从数据库获取学生记录
             Student model = retrieveStudentFromDatabase();
 
