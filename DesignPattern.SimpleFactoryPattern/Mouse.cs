@@ -6,7 +6,6 @@
         public abstract void Print();
     }
 
-
     //戴尔鼠标
     public class DellMouse : Mouse
     {

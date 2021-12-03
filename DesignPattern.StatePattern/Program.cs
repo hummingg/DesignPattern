@@ -4,21 +4,16 @@
     {
         static void Main(string[] args)
         {
-            // 开一个新的账户
-            Account account = new Account("Learning Hard");
+            Car tesla = new Car() {Name = "特斯拉 Model S"};
 
-            // 进行交易
-            // 存钱
-            account.Deposit(1000.0);
-            account.Deposit(200.0);
-            account.Deposit(600.0);
+            // 停止的车不可加速、减速
+            tesla.SpeedUp();
+            tesla.SpeedDown();
 
-            // 付利息
-            account.PayInterest();
-
-            // 取钱
-            account.Withdraw(2000.00);
-            account.Withdraw(500.00);
+            tesla.Run();
+            tesla.SpeedUp();
+            tesla.SpeedDown();
+            tesla.Stop();
         }
     }
 }

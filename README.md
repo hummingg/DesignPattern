@@ -16,3 +16,4 @@
 - https://www.runoob.com/design-pattern/design-pattern-tutorial.html 空对象模式、过滤器模式
 - https://github.com/xuzeyu91/.Net-DesignPattern 过滤器模式
 - https://www.cnblogs.com/PatrickLiu/p/8242238.html 解释器模式
+- https://github.com/sheng-jie/Design-Pattern 状态模式

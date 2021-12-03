@@ -8,7 +8,7 @@
             bool isSingle = true;
             for (int i = 0; i < 999_999; i++)
             {
-                Singleton s = Singleton.GetInstance();  // 尝试多线程创建单例对象
+                Singleton s = Singleton.GetInstance();  // 还需尝试多线程创建单例对象
                 if (i == 0)
                 {
                     hashCode = s.GetHashCode();

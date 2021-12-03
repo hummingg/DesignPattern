@@ -1,16 +1,17 @@
-﻿namespace DesignPattern.StatePattern
+﻿namespace DesignPattern.StatePattern.Account
 {
     public class Account
     {
         public State State { get; set; }
-        public string Owner { get; set; }
+        //public string Owner { get; set; }
         public Account(string owner)
         {
-            this.Owner = owner;
+            //this.Owner = owner;
             this.State = new SilverState(0.0, this);
         }
 
         public double Balance { get { return State.Balance; } } // 余额
+
         // 存钱
         public void Deposit(double amount)
         {
@@ -24,8 +25,16 @@
         // 取钱
         public void Withdraw(double amount)
         {
-            State.Withdraw(amount);
             Console.WriteLine("取款金额为 {0:C}——", amount);
+            if (State.Balance - amount < new RedState(State).LowerLimit)
+            {
+                Console.WriteLine("账户余额为 =:{0:C}", this.Balance);
+                Console.WriteLine("余额不足");
+                Console.WriteLine();
+                return;
+            }
+
+            State.Withdraw(amount);
             Console.WriteLine("账户余额为 =:{0:C}", this.Balance);
             Console.WriteLine("账户状态为: {0}", this.State.GetType().Name);
             Console.WriteLine();
