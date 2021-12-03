@@ -24,7 +24,7 @@ namespace DesignPattern.StatePattern
 
         public void SpeedDown(Car car)
         {
-            Console.WriteLine("路况一般，开始加速行驶！");
+            Console.WriteLine("路况一般，开始减速行驶！");
             car.CurrentCarState = Car.SpeedDownState;
         }
     }
