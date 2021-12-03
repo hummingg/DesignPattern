@@ -1,8 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-// Console.WriteLine("Hello, World!");
-
-// https://www.cnblogs.com/wyy1234/p/9992309.html
-namespace DesignPattern.PrototypePattern
+﻿namespace DesignPattern.PrototypePattern
 {
     class Program
     {
@@ -15,15 +11,19 @@ namespace DesignPattern.PrototypePattern
                 Age = 20,
                 Address = new Address { Province = "山东", City = "青岛" }
             };
-            //一个克隆人，通过clone方法替代了new方法
+
+            // 一个克隆人，通过clone方法替代了new方法，浅拷贝
+            // Name 和 Age 是值类型，不会覆盖 person1
+            // Address 是引用类型，会覆盖 person1
             Person clonePerson = (Person)person1.Clone();
 
-            ////这里使用直接赋值，而不是clone
+            // 这里使用直接赋值，而不是clone
+            // Person是引用类型，所以会完全覆盖person1
             //Person clonePerson = person1;
 
-            clonePerson.Name = "tom";   // Name 和 Age 是值类型，不会影响 person1
+            clonePerson.Name = "tom";   
             clonePerson.Age = 22;
-            clonePerson.Address.Province = "浙江";    // Address 是引用类型，会同时改变 person1
+            clonePerson.Address.Province = "浙江";    
             clonePerson.Address.City = "杭州";
 
             Console.WriteLine($"person1的name:{person1.Name},年龄:{person1.Age}," +
@@ -33,3 +33,5 @@ namespace DesignPattern.PrototypePattern
         }
     }
 }
+
+// https://www.cnblogs.com/wyy1234/p/9992309.html
