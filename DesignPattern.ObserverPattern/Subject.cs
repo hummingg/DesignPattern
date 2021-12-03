@@ -43,6 +43,10 @@
         public void Notify()
         {
             Update();
+            foreach (Observer observer in observers)
+            {
+                observer.Act();
+            }
         }
     }
 }
