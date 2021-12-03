@@ -33,7 +33,6 @@
             for (int i = 0; i < keyCollection.Count; i++)
             {
                 (string key, ContactMemento value) = caretaker.ContactMementoDic.ElementAt(i);
-
                 Console.WriteLine($"{ i }: key={ key },value={ string.Join(',', value.ContactPersonBack.Select(o => o.Name)) }");
             }
             while (true)

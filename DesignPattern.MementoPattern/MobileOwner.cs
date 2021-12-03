@@ -1,16 +1,10 @@
 ﻿namespace DesignPattern.MementoPattern
 {
-    // 联系人
-    public class ContactPerson
-    {
-        public string Name { get; set; }
-        public string MobileNum { get; set; }
-    }
-
     // 发起人
     public class MobileOwner
     {
         public List<ContactPerson> ContactPersons { get; set; }
+
         public MobileOwner(List<ContactPerson> persons)
         {
             ContactPersons = persons;
@@ -36,6 +30,7 @@
                 this.ContactPersons = memento.ContactPersonBack;
             }
         }
+
         public void Show()
         {
             Console.WriteLine("联系人列表中有{0}个人，他们是:", ContactPersons.Count);
@@ -45,26 +40,4 @@
             }
         }
     }
-
-    // 备忘录
-    public class ContactMemento
-    {
-        public List<ContactPerson> ContactPersonBack { get; set; }
-        public ContactMemento(List<ContactPerson> persons)
-        {
-            ContactPersonBack = persons;
-        }
-    }
-
-    // 管理角色：备份库
-    public class Caretaker
-    {
-        // 使用多个备忘录来存储多个备份点
-        public Dictionary<string, ContactMemento> ContactMementoDic { get; set; }
-        public Caretaker()
-        {
-            ContactMementoDic = new Dictionary<string, ContactMemento>();
-        }
-    }
-
 }
