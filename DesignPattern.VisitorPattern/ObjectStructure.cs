@@ -29,5 +29,4 @@ namespace DesignPattern.VisitorPattern
             }
         }
     }
-
 }

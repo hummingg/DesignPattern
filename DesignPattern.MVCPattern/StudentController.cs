@@ -7,7 +7,9 @@
     {
         private Student model;
 
-        // Controller是View的一个策略，Controller 对于 View 是可替换的。
+        // View是Controller的一个策略?
+        // Controller是View的一个策略?
+        // Controller 对于 View 是可替换的。
         // View 和Controller 的关系是一对多。
         // 在实际的开发场景中，也经常会碰到一个 View 被多个 Controller 引用。
         // 这就是策咯模式的一种体现，只是不那么直观而已。

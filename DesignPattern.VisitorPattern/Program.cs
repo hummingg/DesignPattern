@@ -8,7 +8,7 @@
             foreach (Element e in objectStructure.Elements)
             {
                 // 每个元素接受访问者访问
-                e.Accept(new ConcreteVistor());
+                e.Accept(new ConcreteVisitor());
             }
         }
     }

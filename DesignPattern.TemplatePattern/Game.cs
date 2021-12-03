@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.TemplatePattern
+﻿namespace DesignPattern.TemplatePattern
 {
     /// <summary>
     /// 抽象游戏类
     /// </summary>
     public abstract class Game
     {
-        //每款游戏都要投币，子类不能重写
+        //每款游戏都要投币，子类不能重写。币数不一样时重写。
         public void InsertCoins()
         {
             Console.WriteLine("往游戏机里投币...");
